@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
+import Country from './Componints/Country/Country';
 
 function App() {
 
@@ -8,14 +9,8 @@ function App() {
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
     .then(res => res.json())
-    .then(data => {
-      setCoutries(data);
-      console.log(data);
-
-      const names = data.map (country => country.name)
-      console.log(names);
-    
-    })
+    .then(data => 
+      setCoutries(data))
     .catch(error => console.error(error))
   }, [])
 
@@ -23,10 +18,10 @@ function App() {
 
   return (
     <div className="App">
-        <h5 className='hh'> bangladesh is a big city: {coutries.length}</h5>
-        <ul>
+        <h5 className='hh'> Country loaded: {coutries.length}</h5>
+        <ul className='country'>
           {
-            coutries.map(country => <li>{country.name}</li>)
+            coutries.map(country => <Country country={country}></Country>) 
           }
         </ul>
     </div>
