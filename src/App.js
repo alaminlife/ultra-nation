@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Country from './Componints/Country/Country';
+import Carts from './Componints/Carts/Carts';
 
 function App() {
 
@@ -24,7 +25,8 @@ function App() {
   return (
     <div className="App">
         <h5 className='hh'> Country loaded: {coutries.length}</h5>
-        <p>Country added: {Cart.length}</p>
+        <h5>Country added: {Cart.length}</h5>
+        <Carts Cart={Cart}></Carts>
         <ul className='country'>
           {
             coutries.map(country => <Country country={country} handleAddCountry={handleAddCountry}></Country>) 
